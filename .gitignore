@@ -1,0 +1,3 @@
+.pytest_cache/
+src/subdomains/__pycache__/
+test/plates/__pycache__/
