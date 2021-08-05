@@ -10,5 +10,5 @@ class LicensePlate:
     @plate.setter
     def plate(self,plate):
         matched_plate_pattern = re.match(r'^[A-Z]{3}-\d{3,4}$',plate)
-        if not bool(matched_plate_pattern): raise Exception()
+        if not bool(matched_plate_pattern): raise Exception("Input plate does not match with Ecuadorian license plate format.")
         self._plate=plate
