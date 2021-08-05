@@ -14,4 +14,4 @@ class LicensePlate:
         self._plate=plate
 
     def get_last_digit(self):
-        return None
+        return int(self.plate[-1])

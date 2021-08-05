@@ -3,7 +3,7 @@ from src.subdomains.plate import LicensePlate
 
 class TestPlatesSubdomain(TestCase):
     def test_plate_data_type_is_incorrect(self):
-        incorrect_plates=["T*V-12345","78J-123F","*-+-12345,AAAA-123456","aaa1234","AAA1234","1231234","AAA-34**"]
+        incorrect_plates=["T*V-12345","78J-123F","*-+-12345,AAAA-123456","aaa1234","AAA1234","1231234","AAA-34**","",None]
         with self.assertRaises(Exception):
             for incorrect_plate in incorrect_plates:
                 LicensePlate(incorrect_plate)
@@ -26,6 +26,12 @@ class TestPlatesSubdomain(TestCase):
         plate3=LicensePlate("AAA-0826")
         self.assertEqual(plate3.get_last_digit(),6)
 
-        plate4=LicensePlate("AAA-4668")
+        plate4=LicensePlate("TBD-4668")
         self.assertEqual(plate4.get_last_digit(),8)
+
+        plate5=LicensePlate("QTY-4660")
+        self.assertEqual(plate5.get_last_digit(),0)
+
+        plate6=LicensePlate("LKJ-660")
+        self.assertEqual(plate6.get_last_digit(),0)
     
