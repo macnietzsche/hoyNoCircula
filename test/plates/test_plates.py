@@ -15,4 +15,17 @@ class TestPlatesSubdomain(TestCase):
                 LicensePlate(correct_plate)
             except Exception:
                 assert False
+
+    def test_retrive_plate_last_digit(self):
+        plate1=LicensePlate("TBF-1234")
+        self.assertEqual(plate1.get_last_digit(),4)
+
+        plate2=LicensePlate("PTT-123")
+        self.assertEqual(plate2.get_last_digit(),3)
+
+        plate3=LicensePlate("AAA-0826")
+        self.assertEqual(plate3.get_last_digit(),6)
+
+        plate4=LicensePlate("AAA-4668")
+        self.assertEqual(plate4.get_last_digit(),8)
     
