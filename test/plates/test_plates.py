@@ -3,18 +3,56 @@ from src.subdomains.plate import LicensePlate
 
 class TestPlatesSubdomain(TestCase):
     def test_plate_data_type_is_incorrect(self):
-        incorrect_plates=["T*V-12345","78J-123F","*-+-12345,AAAA-123456","aaa1234","AAA1234","1231234","AAA-34**","",None]
         with self.assertRaises(Exception):
-            for incorrect_plate in incorrect_plates:
-                LicensePlate(incorrect_plate)
+            LicensePlate("T*V-12345")
+
+        with self.assertRaises(Exception):
+            LicensePlate("78J-123F")
+
+        with self.assertRaises(Exception):
+            LicensePlate("*-+-12345")
+
+        with self.assertRaises(Exception):
+            LicensePlate("AAAA-123456")
+
+        with self.assertRaises(Exception):
+            LicensePlate("aaa1234")
+
+        with self.assertRaises(Exception):
+            LicensePlate("AAA1234")
+
+        with self.assertRaises(Exception):
+            LicensePlate("1231234")
+
+        with self.assertRaises(Exception):
+            LicensePlate("AAA-34**")
+
+        with self.assertRaises(Exception):
+            LicensePlate("")
+
+        with self.assertRaises(Exception):
+            LicensePlate(None)
 
     def test_plate_data_type_is_correct(self):
-        correct_plates=["TBF-1234","PTT-123","AAA-0826","AAA-4666"]
-        for correct_plate in correct_plates:
-            try:
-                LicensePlate(correct_plate)
-            except Exception:
-                assert False
+        try:
+            LicensePlate("TBF-1234")
+        except Exception:
+            assert False
+
+        try:
+            LicensePlate("PTT-123")
+        except Exception:
+            assert False
+
+        try:
+            LicensePlate("AAA-0826")
+        except Exception:
+            assert False
+
+        try:
+            LicensePlate("AAA-4666")
+        except Exception:
+            assert False
 
     def test_retrive_plate_last_digit(self):
         plate1=LicensePlate("TBF-1234")
