@@ -4,7 +4,7 @@ class DateHandler:
         self.date_time_object=datetime.strptime(date_time_input,"%Y-%m-%d %H:%M")
 
     def get_day_as_integer(self):
-        return None
+        return self.date_time_object.weekday()
     
         
 
