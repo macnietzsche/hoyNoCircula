@@ -37,3 +37,13 @@ class TestDateTime(TestCase):
         except Exception:
             assert False
 
+    def test_day_of_the_week(self):
+        date1=DateHandler("2020-12-01 20:23")
+        self.assertEqual(date1.get_day_as_integer(),1)
+
+        date1=DateHandler("2021-10-09 20:23")
+        self.assertEqual(date1.get_day_as_integer(),5)
+
+        date1=DateHandler("2024-02-28 20:23")
+        self.assertEqual(date1.get_day_as_integer(),2)
+
