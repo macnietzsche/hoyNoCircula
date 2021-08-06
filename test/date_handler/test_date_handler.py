@@ -70,12 +70,6 @@ class TestDateTime(TestCase):
         date3=DateHandler("2024-02-28 20:23")
         self.assertEqual(date3.get_day_as_integer(),2)
 
-        date4=DateHandler("20:23")
-        self.assertEqual(date4.get_day_as_integer(),-1)
-
-        date5=DateHandler("00:23")
-        self.assertEqual(date5.get_day_as_integer(),-1)
-
     def test_get_hour_as_time_object(self):
         date1=DateHandler("2020-12-01 20:23")
         self.assertEqual(date1.get_hour_as_time_object(),time(20,23))

@@ -2,6 +2,7 @@ from datetime import datetime
 class DateHandler:
     def __init__(self,date_time_input) -> None:
         self.date_time_object=date_time_input
+        self.has_day=False
     @property
     def date_time_object(self):
         return self._date_time_object
@@ -11,7 +12,10 @@ class DateHandler:
         try:
             self._date_time_object=datetime.strptime(date_time_input,"%Y-%m-%d %H:%M")
         except ValueError:
-            raise Exception("Datetime input is not valid")
+            try:
+                self._date_time_object=datetime.strptime(date_time_input,"%H:%M")
+            except ValueError:
+             raise Exception("Datetime input is not valid")
 
     def get_day_as_integer(self):
         return self.date_time_object.weekday()
