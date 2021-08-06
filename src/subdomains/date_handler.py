@@ -7,7 +7,7 @@ class DateHandler:
         return self.date_time_object.weekday()
 
     def get_hour_as_time_object(self):
-        return None
+        return self.date_time_object.time()
     
         
 
