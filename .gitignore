@@ -1,3 +1,4 @@
 .pytest_cache/
 src/subdomains/__pycache__/
 test/plates/__pycache__/
+test/date_handler/__pycache__/
