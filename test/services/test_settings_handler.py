@@ -83,6 +83,9 @@ class TestSettingHandler(TestCase):
         expected_time_segments=[(time(7,0),time(9,30)),(time(16,0),time(19,30))]
         self.assertEqual(wednesday.get_restricted_time_segments(),expected_time_segments)
 
+        sunday=SettingsHandler(6)
+        self.assertEqual(sunday.get_restricted_time_segments(),[])
+
     
     def test_restricted_plate_ending_digits(self):
 
@@ -97,6 +100,9 @@ class TestSettingHandler(TestCase):
         wednesday=SettingsHandler(2)
         expected_restricted_plate_ending_digits=[2,4,6,8,0]
         self.assertEqual(wednesday.get_restricted_plate_ending_digits(),expected_restricted_plate_ending_digits)
+
+        sunday=SettingsHandler(6)
+        self.assertEqual(sunday.get_restricted_time_segments(),[])
 
         
       
