@@ -1,4 +1,5 @@
 from unittest import TestCase
+from datetime import time
 from src.services.settings_handler import SettingsHandler
 
 class TestSettingHandler(TestCase):
@@ -68,6 +69,34 @@ class TestSettingHandler(TestCase):
             SettingsHandler(6)
         except Exception:
             assert False
+
+    def test_restricted_time_segments(self):
+        monday=SettingsHandler(0)
+        expected_time_segments=[(time(7,0),time(9,30)),(time(16,0),time(19,30))]
+        self.assertEqual(monday.get_restricted_time_segments(),expected_time_segments)
+
+        tuesday=SettingsHandler(1)
+        expected_time_segments=[(time(7,0),time(9,30)),(time(16,0),time(19,30))]
+        self.assertEqual(tuesday.get_restricted_time_segments(),expected_time_segments)
+
+        wednesday=SettingsHandler(2)
+        expected_time_segments=[(time(7,0),time(9,30)),(time(16,0),time(19,30))]
+        self.assertEqual(wednesday.get_restricted_time_segments(),expected_time_segments)
+
+    
+    def test_restricted_plate_ending_digits(self):
+
+        monday=SettingsHandler(0)
+        expected_restricted_plate_ending_digits=[2,4,6,8,0]
+        self.assertEqual(monday.get_restricted_plate_ending_digits(),expected_restricted_plate_ending_digits)
+
+        tuesday=SettingsHandler(1)
+        expected_restricted_plate_ending_digits=[1,3,5,7,9]
+        self.assertEqual(tuesday.get_restricted_plate_ending_digits(),expected_restricted_plate_ending_digits)
+
+        wednesday=SettingsHandler(2)
+        expected_restricted_plate_ending_digits=[2,4,6,8,0]
+        self.assertEqual(wednesday.get_restricted_plate_ending_digits(),expected_restricted_plate_ending_digits)
 
         
       
