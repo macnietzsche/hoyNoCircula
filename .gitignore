@@ -1,4 +1,5 @@
 .pytest_cache/
+/test/__pycache__/
 src/subdomains/__pycache__/
 src/services/__pycache__/
 src/predictor/__pycache__/

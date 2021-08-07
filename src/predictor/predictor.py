@@ -1,7 +1,7 @@
-from src.subdomains.date_handler import DateHandler
-from src.subdomains.plate import LicensePlate
-from src.services.settings_handler import SettingsHandler
-from src.services.time_methods import is_time_in_range
+from subdomains.date_handler import DateHandler
+from subdomains.plate import LicensePlate
+from services.settings_handler import SettingsHandler
+from services.time_methods import is_time_in_range
 
 class Predictor:
     def __init__(self,date_n_time,plates) -> None:
