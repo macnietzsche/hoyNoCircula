@@ -1,10 +1,12 @@
 from configparser import ConfigParser
+from re import S
 from subdomains.date_handler import DateHandler
 
 day_names_hashmap={0: "MONDAY",1:"TUESDAY",2:"WEDNESDAY",3:"THURSDAY",4:"FRIDAY",5:"SATURDAY",6:"SUNDAY"}
+path_to_settings={"testing":"test/config/restrictions_testing.ini","production":"config/restrictions.ini"}
 class SettingsHandler():
-    def __init__(self,day_of_week_as_integer,path_to_settings) -> None:
-        self.path_to_settings=path_to_settings
+    def __init__(self,day_of_week_as_integer,mode="production") -> None:
+        self.mode=mode
         self.settings_of_day=day_of_week_as_integer
     
     @property
@@ -15,7 +17,7 @@ class SettingsHandler():
     def settings_of_day(self,day_of_week_as_integer):
         if not (isinstance(day_of_week_as_integer, int) and day_of_week_as_integer>=0 and day_of_week_as_integer<=6): raise Exception("Day parameter is not valid")
         config=ConfigParser()
-        config.read(self.path_to_settings)
+        config.read(path_to_settings[self.mode])
         self._settings_of_day=config[day_names_hashmap[day_of_week_as_integer]]
           
     def get_restricted_time_segments(self):
