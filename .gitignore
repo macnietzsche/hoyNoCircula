@@ -1,6 +1,8 @@
 .pytest_cache/
 src/subdomains/__pycache__/
 src/services/__pycache__/
+src/predictor/__pycache__/
 test/plates/__pycache__/
 test/date_handler/__pycache__/
 test/services/__pycache__/
+test/predictor/__pycache__/
