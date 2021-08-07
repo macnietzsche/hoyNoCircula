@@ -2,7 +2,6 @@ from datetime import datetime
 class DateHandler:
     def __init__(self,date_time_input) -> None:
         self.date_time_object=date_time_input
-        self.has_day=False
     @property
     def date_time_object(self):
         return self._date_time_object
