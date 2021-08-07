@@ -1,14 +1,14 @@
-# Welcome to Quito Distrito Metropolitano
+# Quito Distrito Metropolitano - Pico y Placa
 Because of the increasing number of cars, Quito Distrito Metropolitano has develop a strategy called "Pico y Placa" that aims to decrease vehicle traffic on busy hours. Vehicles are prohibited to be on the roads depending on their plates, day of the week and time; according to the following table:
 
 | Day of the week             | Plates allowed to be on the road | Plates not allowed to be on the road | Restriction schedule     |
 | ----------------------------| -------------------------------- |--------------------------------------|--------------------------|
-|Monday, Wednesday,Friday     | 1,3,5,7,9                        |0,2,4,6,8                             |07:00-09:30/16:00-19:30   |
-|Tuesday, Thursday,Saturday   | 0,2,4,6,8                        |1,3,5,7,9                             |07:00-09:30/16:00-19:30   |
+|Monday, Wednesday, Friday     | 1,3,5,7,9                        |0,2,4,6,8                             |07:00-09:30/16:00-19:30   |
+|Tuesday, Thursday, Saturday   | 0,2,4,6,8                        |1,3,5,7,9                             |07:00-09:30/16:00-19:30   |
 |Sunday, Holidays             | All                              |None                                  |07:00-09:30/16:00-19:30   |
 
 ## Introducing Can my car be on the road? - Predictor
-As many car drivers have been fined due to their lack of knowledge about Pico y Placa,  we have developed a predictor that tells if a vehicle can be on the roads based on its plate, date and time.
+As many car drivers have been fined due to their lack of knowledge about Pico y Placa, we have developed a predictor that tells if a vehicle can be on the roads based on its plate, date and time.
 
 ### Requirements
 The project requires [Python 3.7](https://www.python.org/downloads/release/python-370/) and
@@ -33,7 +33,7 @@ $ Vehicle with plates AAA-0826 can be on the road on 2021-08-01 15:23
 ```
 
 ## For administrators
-The confinguration file ```config/restrictions.ini``` has been generated to help administrators manage restrictions' behaviour in case they need to. Below is an example of a restriction configuration for Monday:
+The configuration file ```config/restrictions.ini``` has been generated to help administrators manage restrictions' behavior in case they need to. Below is an example of a restriction configuration for Monday:
 ```ini
 [MONDAY]
 restricted=yes
@@ -48,9 +48,10 @@ where:
 
 ## For developers
 ### Run the tests
-14 tests have been written in order to test subdomains (units), services, and end-to-end points
-
 ```console
 $ python -m pytest
 ```
+14 tests have been written in order to test subdomains (units), services, and end-to-end points. Settings handler subdomain has testing and production environments, so when running tests, the configuration file is ```test/config/restrictions_testing.ini```
+
+
 
