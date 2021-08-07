@@ -22,6 +22,7 @@ In order to get a prediction, the user must provide the vehicle(s)' plate, date 
   { "plate": "ABB-0826", "datetime": "2021-08-01 15:23" },
 ]
 ```
+Please notice that plate's format must be AAA-1234 or AAA-123 and datetime's format must be YYYY-MM-DD HH:MM 
 ### Run the application and get predicitions
 ```console
 $ python src/app.py
