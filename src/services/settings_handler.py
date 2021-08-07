@@ -3,9 +3,10 @@ from subdomains.date_handler import DateHandler
 
 day_names_hashmap={0: "MONDAY",1:"TUESDAY",2:"WEDNESDAY",3:"THURSDAY",4:"FRIDAY",5:"SATURDAY",6:"SUNDAY"}
 class SettingsHandler():
-    def __init__(self,day_of_week_as_integer) -> None:
+    def __init__(self,day_of_week_as_integer,path_to_settings) -> None:
+        self.path_to_settings=path_to_settings
         self.settings_of_day=day_of_week_as_integer
-
+    
     @property
     def settings_of_day(self):
         return self._settings_of_day
@@ -14,13 +15,12 @@ class SettingsHandler():
     def settings_of_day(self,day_of_week_as_integer):
         if not (isinstance(day_of_week_as_integer, int) and day_of_week_as_integer>=0 and day_of_week_as_integer<=6): raise Exception("Day parameter is not valid")
         config=ConfigParser()
-        config.read('config/restrictions.ini')
+        config.read(self.path_to_settings)
         self._settings_of_day=config[day_names_hashmap[day_of_week_as_integer]]
-        
-
+          
     def get_restricted_time_segments(self):
-        if self._settings_of_day['restricted']=="yes":
-            time_segments = self._settings_of_day['restricted_time'].split("/")
+        if self.settings_of_day['restricted']=="yes":
+            time_segments = self.settings_of_day['restricted_time'].split("/")
             time_segments_list=[]
             for time_segment in time_segments:
                 (start_time,end_time)=time_segment.split("-")
@@ -36,7 +36,7 @@ class SettingsHandler():
         return [];
     
     def get_restricted_plate_ending_digits(self):
-        if self._settings_of_day['restricted']=="yes":
+        if self.settings_of_day['restricted']=="yes":
             digits_as_characters=self._settings_of_day['restricted_plate_ending_digit'].split(",")
             return list(map(lambda x: int(x),digits_as_characters))
         return []
